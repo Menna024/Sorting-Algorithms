@@ -41,6 +41,24 @@ public class Solution {
         display(arr);
     }
 
+    public static void insertionSort(int[] arr,int n) { //At every path, a small element is placed
+        for(int i=1;i<n;i++)
+        {
+            int key=arr[i];
+            int j=i-1;
+
+            while(j>=0 && arr[j]>key)
+            {
+                arr[j+1]=arr[j];
+                j--;
+            }
+            arr[j+1]=key;   
+        }
+        
+        System.out.print("The ordered array is :");
+        display(arr);
+    }
+
     public static void display(int [] arr)
     {
         for(int s:arr)
@@ -90,6 +108,9 @@ public class Solution {
                 break;
             case 3:
                 // Insertion Sort
+                System.out.print("The unordered array is : ");
+                display(arr);
+                insertionSort(arr,n);
                 break;
             case 4:
                 // Merge Sort
