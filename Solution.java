@@ -15,9 +15,30 @@ public class Solution {
             }
         }
         
-        System.out.print("The ordered array is :");
+        System.out.print("The ordered array by bubble sort is :");
         display(arr);
-        //2 4 1 5 3 7  n=6
+    }
+
+    public static void selectionSort(int[] arr,int n) { //At every path, a small element is placed at its correct position
+        for(int i=0;i<n-1;i++)
+        {
+            int min=i;
+            for(int j=i+1;j<n;j++)
+            {
+                if(arr[j]<arr[min])
+                 min=j;
+            }
+
+            if(min!=i)
+            {
+                //swap arr[min] and arr[i]
+                int temp=arr[min];
+                arr[min]=arr[i];
+                arr[i]=temp;
+            }
+        }
+        System.out.print("The ordered array by selection sort is :");
+        display(arr);
     }
 
     public static void display(int [] arr)
@@ -51,7 +72,7 @@ public class Solution {
         System.out.println("2. Selection Sort");
         System.out.println("3. Insertion Sort");
         System.out.println("4. Merge Sort");
-        
+
         int choice = sc.nextInt();
         switch(choice)
         {
@@ -63,6 +84,9 @@ public class Solution {
                 break;
             case 2:
                 // Selection Sort
+                System.out.print("The unordered array is : ");
+                display(arr);
+                selectionSort(arr,n);
                 break;
             case 3:
                 // Insertion Sort
