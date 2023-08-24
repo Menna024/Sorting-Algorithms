@@ -1,63 +1,6 @@
 import java.util.Scanner;
 
 public class Solution {
-    public static void bubbleSort(int[] arr,int n) { //At every path, a large element is placed at its correct position
-        for(int i=0;i<n-1;i++)
-        {
-            for(int j=0;j<n-i-1;j++)
-            {
-                if(arr[j]>arr[j+1])
-                {
-                    int temp=arr[j+1];
-                    arr[j+1]=arr[j];
-                    arr[j]=temp;
-                }
-            }
-        }
-        
-        System.out.print("The ordered array by bubble sort is :");
-        display(arr);
-    }
-
-    public static void selectionSort(int[] arr,int n) { //At every path, a small element is placed at its correct position
-        for(int i=0;i<n-1;i++)
-        {
-            int min=i;
-            for(int j=i+1;j<n;j++)
-            {
-                if(arr[j]<arr[min])
-                 min=j;
-            }
-
-            if(min!=i)
-            {
-                //swap arr[min] and arr[i]
-                int temp=arr[min];
-                arr[min]=arr[i];
-                arr[i]=temp;
-            }
-        }
-        System.out.print("The ordered array by selection sort is :");
-        display(arr);
-    }
-
-    public static void insertionSort(int[] arr,int n) { //At every path, a small element is placed
-        for(int i=1;i<n;i++)
-        {
-            int key=arr[i];
-            int j=i-1;
-
-            while(j>=0 && arr[j]>key)
-            {
-                arr[j+1]=arr[j];
-                j--;
-            }
-            arr[j+1]=key;   
-        }
-        
-        System.out.print("The ordered array is :");
-        display(arr);
-    }
 
     public static void display(int [] arr)
     {
@@ -90,31 +33,48 @@ public class Solution {
         System.out.println("2. Selection Sort");
         System.out.println("3. Insertion Sort");
         System.out.println("4. Merge Sort");
-
+        System.out.println("5. Quicksort");
+        System.out.println("6. Counting sort" );
         int choice = sc.nextInt();
+
+        System.out.print("The unordered array is : ");
+        display(arr);
+       
         switch(choice)
         {
             case 1:
                 // Bubble Sort
-                System.out.print("The unordered array is : ");
+                BubbleSort.bubbleSort(arr,n);
                 display(arr);
-                bubbleSort(arr,n);
                 break;
+
             case 2:
                 // Selection Sort
-                System.out.print("The unordered array is : ");
+                SelectionSort.selectionSort(arr,n);
                 display(arr);
-                selectionSort(arr,n);
                 break;
+
             case 3:
                 // Insertion Sort
-                System.out.print("The unordered array is : ");
+                InsertionSort.insertionSort(arr,n);
                 display(arr);
-                insertionSort(arr,n);
                 break;
+
             case 4:
                 // Merge Sort
+                MergeSort.mergeSort(arr,n);
+                display(arr);
                 break;
+            case 5:
+                // Quicksort
+                QuickSort.quickSort(arr,n,0,n-1);
+                display(arr);
+                break;   
+            case 6:
+                // Counting Sort
+                CountingSort.countingSort(arr,n);
+                display(arr);
+                break;     
             default:
                 System.out.println("Invalid choice");
                 break;
